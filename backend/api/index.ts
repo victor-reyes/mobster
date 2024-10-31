@@ -6,6 +6,10 @@ app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
 
-// app.listen(3000, () => console.log("Server ready on port 3000."));
 
-module.exports = app;
+app.get("/api/v1/mobs", (req, res) => {
+  res.send("all mobs")
+})
+
+export default app;
+
