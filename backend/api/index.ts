@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 type Mobster = { id: string; name: string };
-const pathToDataFolder = path.join(__dirname, "data");
+const pathToDataFolder = path.join(process.cwd(), "data");
 const pathToMobsterFile = path.join(pathToDataFolder, "mobsters.json");
 
 async function loadMobstersFromFile() {
@@ -43,5 +43,10 @@ app.post("/api/v1/mobs", async (req, res) => {
 });
 
 const createId = () => Math.random().toString();
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 export default app;
